@@ -1,0 +1,9 @@
+## Interface: 70000
+## Title: TimeTrack
+## Version: 0.1.0
+## Notes: Addon for tracking time played
+## Author: Freszone
+## SavedVariables: TimeTrack_Options
+TimeTrack_UI.lua
+TimeTrack.xml
+TimeTrack.lua

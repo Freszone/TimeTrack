@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+   <Frame name="TimeTrack_FrameTemplate"
+          hidden="true" movable="true" toplevel="true"
+          enableMouse="true" clampedToScreen="true" frameStrata="DIALOG"
+          parent="UIParent" virtual="true">
+
+     <Size><AbsDimension x="165" y="45" /></Size>
+
+     <Anchors><Anchor point="CENTER" /></Anchors>
+
+     <Backdrop bgFile="Interface\FrameGeneral\UI-Background-Marble"
+               edgeFile="Interface\DialogFrame\UI-DialogBox-Gold-Border" tile="false">
+       <EdgeSize val="16"/>
+       <BackgroundInsets left="4" right="4" top="4" bottom="4"/>
+     </Backdrop>
+
+     <!-- <TitleRegion setAllPoints="true" /> -->
+
+   </Frame>
+
+   <Frame name="TimeTrack_MainFrame" inherits="TimeTrack_FrameTemplate" alpha="0.8">
+     <Frames>
+     </Frames>
+
+     <Layers>
+       <Layer>
+         <FontString name="$parent_GoldText" inherits="GameFontNormal" text="">
+           <Anchors>
+             <Anchor point="CENTER">
+             </Anchor>
+           </Anchors>
+         </FontString>
+       </Layer>
+     </Layers>
+
+     <Scripts>
+       <OnMouseDown>
+         TimeTrack_MainFrame_OnMouseDown(self, button)
+       </OnMouseDown>
+       <OnMouseUp>
+         TimeTrack_MainFrame_OnMouseUp(self, button)
+       </OnMouseUp>
+     </Scripts>
+   </Frame>
+
+   <Frame name="TimeTrack_MainMenu" inherits="UIDropDownMenuTemplate" id="1">
+     <Scripts>
+       <OnLoad>
+         UIDropDownMenu_Initialize(self, TimeTrack_MainMenu_OnLoad, "MENU")
+       </OnLoad>
+     </Scripts>
+   </Frame>
+
+</Ui>
