@@ -1,6 +1,13 @@
 -----------------------------
 ---- TimeTrack_MainFrame ----
 -----------------------------
+local available_fonts = {
+   ["Hack"] = "Hack.ttf",
+   ["Anonymous"] = "Anonymous.ttf",
+   ["PT Sans Narrow"] = "PTC55F.ttf",
+   ["Source Code Pro"] = "SourceCodePro-Regular.otf"
+}
+
 function TimeTrack_MainFrame_OnMouseDown(self, button)
    if button == "LeftButton" then
       if not self.isMoving then
@@ -31,6 +38,16 @@ local function tracking_menu_option(opt, text, value)
    }
 end
 
+local function create_font_list(fonts)
+   local list = {}
+
+   for k, v in pairs(fonts) do
+      table.insert(list, tracking_menu_option("font", k, v))
+   end
+
+   return list
+end
+
 local TimeTrack_MainMenu_Info = {
    -- Level 1
    [1] = {
@@ -56,6 +73,18 @@ local TimeTrack_MainMenu_Info = {
             ["hasArrow"] = true,
             ["menuList"] = 2,
          },
+	 [4] = {
+            ["text"] = "Font",
+            ["notCheckable"] = true,
+            ["hasArrow"] = true,
+            ["menuList"] = 3,
+	 },
+	 [5] = {
+            ["text"] = "Font Size",
+            ["notCheckable"] = true,
+            ["hasArrow"] = true,
+            ["menuList"] = 4,
+	 }
       },
    },
 
@@ -75,6 +104,16 @@ local TimeTrack_MainMenu_Info = {
          [5] = tracking_menu_option("scale", "1.5", 1.5),
          [6] = tracking_menu_option("scale", "1.75", 1.75),
          [7] = tracking_menu_option("scale", "2.0", 2.0),
+      },
+      [3] = create_font_list(available_fonts),
+      [4] = {
+	 [1] = tracking_menu_option("font_size", "8", 8),
+	 [2] = tracking_menu_option("font_size", "9", 9),
+	 [3] = tracking_menu_option("font_size", "10", 10),
+	 [4] = tracking_menu_option("font_size", "11", 11),
+	 [5] = tracking_menu_option("font_size", "12", 12),
+	 [6] = tracking_menu_option("font_size", "13", 13),
+	 [7] = tracking_menu_option("font_size", "14", 14),
       },
    },
 }

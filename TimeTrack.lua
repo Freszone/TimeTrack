@@ -14,8 +14,11 @@ TimeTrack.events_ = {
 
 TimeTrack_Options = {
    mode = "total",
-   scale = 1.0
+   scale = 1.0,
+   font = "Anonymous.ttf",
+   font_size = 10,
 }
+
 
 ---------------------------
 ---- Utility functions ----
@@ -47,9 +50,8 @@ local function time_string(t)
    local hours = math.floor((total / 3600) % 24)
    local days = math.floor(total / 3600 / 24)
    -- strftime equivalent would be nice here
-   return days .. "d " .. hours .. "h " .. minutes .. "min " .. seconds .. "sec"
+   return (days < 10 and "0" .. days or days) .. "d " .. (hours < 10 and "0" .. hours or hours) .. "h " .. (minutes < 10 and "0" .. minutes or minutes) .. "min " .. (seconds < 10 and "0" .. seconds or seconds) .. "sec"
 end
-
 --------------------------
 ---- Main addon logic ----
 --------------------------
@@ -95,6 +97,7 @@ end
 
 function TimeTrack:refresh_mainframe()
    self.frame:SetScale(TimeTrack_Options.scale)
+   TimeTrack_MainFrame_GoldText:SetFont("Interface\\AddOns\\TimeTrack\\media\\" .. TimeTrack_Options.font, TimeTrack_Options.font_size, "OUTLINE")
    self:update_mainframe()
 end
 

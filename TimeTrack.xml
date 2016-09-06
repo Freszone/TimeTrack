@@ -27,7 +27,7 @@
 
      <Layers>
        <Layer>
-         <FontString name="$parent_GoldText" inherits="GameFontNormal" text="">
+         <FontString name="$parent_GoldText" text="">
            <Anchors>
              <Anchor point="CENTER">
              </Anchor>
